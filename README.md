@@ -137,5 +137,5 @@ This project is developed for educational and cybersecurity awareness purposes o
 
 Developed as a student cybersecurity internship project.
 
-**Project Name:** PhishGuard  
-**Category:** Cybersecurity / Phishing Detection
+Project Name: PhishGuard  
+Category: Cybersecurity / Phishing Detection
