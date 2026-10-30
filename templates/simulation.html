@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Phishing Simulation | PhishGuard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">PhishGuard</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/simulation">Simulation</a>
+    </div>
+</nav>
+
+<section class="dashboard">
+
+    <h2>Phishing Attack Simulation</h2>
+
+    <p>
+        Read the fictional email below and identify whether
+        it looks suspicious.
+    </p>
+
+    <div class="card" style="margin-top: 25px;">
+
+        <h3>Sample Email</h3>
+
+        <p><strong>From:</strong> security@example-training.test</p>
+
+        <p><strong>Subject:</strong> Urgent Account Verification</p>
+
+        <hr style="margin: 15px 0;">
+
+        <p>
+            Dear User,
+        </p>
+
+        <p style="margin-top: 12px;">
+            We noticed unusual activity in your account.
+            Please verify your account immediately to avoid
+            temporary suspension.
+        </p>
+
+        <p style="margin-top: 12px;">
+            Click here to verify your account.
+        </p>
+
+        <p style="margin-top: 12px;">
+            Thank you,<br>
+            Security Awareness Training Team
+        </p>
+
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+
+        <h3>What do you think?</h3>
+
+        <p>Choose the correct classification:</p>
+
+        <button onclick="checkAnswer('phishing')">
+            Phishing Email
+        </button>
+
+        <button onclick="checkAnswer('legitimate')"
+                style="background: #64748b;">
+            Legitimate Email
+        </button>
+
+        <div id="feedback" style="margin-top: 25px;"></div>
+
+    </div>
+
+</section>
+
+<footer>
+    PhishGuard | Student Cybersecurity Project
+</footer>
+
+<script>
+
+function checkAnswer(answer) {
+
+    const feedback = document.getElementById("feedback");
+
+    if (answer === "phishing") {
+
+        feedback.innerHTML = `
+            <h3 style="color: green;">Correct Answer!</h3>
+            <p>
+                This is a phishing-style example.
+                It creates urgency and asks the user to verify
+                an account without providing trustworthy context.
+            </p>
+        `;
+
+    } else {
+
+        feedback.innerHTML = `
+            <h3 style="color: #dc2626;">Not Quite!</h3>
+            <p>
+                This email contains warning signs such as
+                urgent language and an unexpected account
+                verification request.
+            </p>
+        `;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

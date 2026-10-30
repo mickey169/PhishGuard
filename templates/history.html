@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scan History | PhishGuard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">PhishGuard</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/email-detector">Email Detector</a>
+            <a href="/url-scanner">URL Scanner</a>
+            <a href="/history">History</a>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+
+        <h2>Scan History</h2>
+        
+        <a href="/export" class="primary-btn">
+          Download CSV Report
+        </a>
+        <p>Previously analyzed emails and URLs are shown below.</p>
+
+        {% if records %}
+
+        <div class="cards">
+
+            {% for record in records %}
+
+            <div class="card">
+
+                <h3>{{ record['scan_type'] }} Scan</h3>
+
+                <p>
+                    <strong>Input:</strong>
+                    {{ record['input_text'][:120] }}
+                </p>
+
+                <p>
+                    <strong>Risk Level:</strong>
+                    {{ record['risk_level'] }}
+                </p>
+
+                <p>
+                    <strong>Indicator Score:</strong>
+                    {{ record['score'] }}/100
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    {{ record['created_at'] }}
+                </p>
+
+                <p>
+                    <strong>Findings:</strong>
+                    {{ record['findings'] }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <div class="card">
+            <h3>No scan history yet</h3>
+            <p>Analyze an email or URL to see its result here.</p>
+        </div>
+
+        {% endif %}
+
+    </section>
+
+    <footer>
+        PhishGuard | Student Cybersecurity Project
+    </footer>
+
+</body>
+</html>

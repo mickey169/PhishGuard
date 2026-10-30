@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Email Detector | PhishGuard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">PhishGuard</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/email-detector">Email Detector</a>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+
+        <h2>Email Phishing Detector</h2>
+
+        <p>
+            Paste an email below to check for common phishing indicators.
+        </p>
+
+        <form method="POST" class="card">
+
+            <label for="email_text">
+                **Enter email content:**
+            </label>
+
+            <textarea
+                id="email_text"
+                name="email_text"
+                rows="9"
+                placeholder="Paste sample email text here..."
+                required
+                style="width: 100%; padding: 12px; margin-top: 15px; border: 1px solid #ccd5e0; border-radius: 6px; font-family: Arial;"
+            >{{ email_text }}</textarea>
+
+            <button type="submit" class="primary-btn">
+                Analyze Email
+            </button>
+
+        </form>
+
+        {% if result %}
+
+        <div class="card" style="margin-top: 25px;">
+
+            <h3>Analysis Result</h3>
+
+            <p>
+                Risk Level: <strong>{{ result.risk }}</strong>
+            </p>
+
+            <p>
+                Indicator Score: <strong>{{ result.score }}/100</strong>
+            </p>
+
+            <h3 style="margin-top: 20px;">Detected Indicators</h3>
+
+            <ul style="padding-left: 20px; line-height: 2;">
+                {% for finding in result.findings %}
+                    <li>{{ finding }}</li>
+                {% endfor %}
+            </ul>
+
+            <p style="margin-top: 20px;">
+                This is a basic rule-based educational check.
+                A low score does not guarantee that an email is safe.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+        <p style="margin-top: 25px;">
+            <a href="/" style="color: #2563eb;">← Back to Home</a>
+        </p>
+
+    </section>
+
+    <footer>
+        PhishGuard | Student Cybersecurity Project
+    </footer>
+
+</body>
+</html>

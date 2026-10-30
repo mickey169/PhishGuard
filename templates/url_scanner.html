@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URL Scanner | PhishGuard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">PhishGuard</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/email-detector">Email Detector</a>
+            <a href="/url-scanner">URL Scanner</a>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+
+        <h2>URL Phishing Scanner</h2>
+
+        <p>
+            Enter a website URL to check for common suspicious characteristics.
+        </p>
+
+        <form method="POST" class="card">
+
+            <label for="url">Enter website URL:</label>
+
+            <input
+                type="text"
+                id="url"
+                name="url"
+                placeholder="Example: https://example.com"
+                value="{{ submitted_url }}"
+                required
+                style="width: 100%; padding: 12px; margin-top: 15px; border: 1px solid #ccd5e0; border-radius: 6px;"
+            >
+
+            <button type="submit" class="primary-btn">
+                Scan URL
+            </button>
+
+        </form>
+
+        {% if result %}
+
+        <div class="card" style="margin-top: 25px;">
+
+            <h3>Scan Result</h3>
+
+            <p>
+                Risk Level: <strong>{{ result.risk }}</strong>
+            </p>
+
+            <p>
+                Indicator Score: <strong>{{ result.score }}/100</strong>
+            </p>
+
+            <h3 style="margin-top: 20px;">Detected Indicators</h3>
+
+            <ul style="padding-left: 20px; line-height: 2;">
+                {% for finding in result.findings %}
+                    <li>{{ finding }}</li>
+                {% endfor %}
+            </ul>
+
+            <p style="margin-top: 20px;">
+                This scanner checks URL characteristics only.
+                It does not visit the website or guarantee that
+                a URL is safe.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+        <p style="margin-top: 25px;">
+            <a href="/" style="color: #2563eb;">← Back to Home</a>
+        </p>
+
+    </section>
+
+    <footer>
+        PhishGuard | Student Cybersecurity Project
+    </footer>
+
+</body>
+</html>

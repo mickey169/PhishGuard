@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Quiz | PhishGuard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">PhishGuard</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/quiz">Awareness Quiz</a>
+    </div>
+</nav>
+
+<section class="dashboard">
+    <h2>Phishing Awareness Quiz</h2>
+    <p>Test your knowledge of phishing and online safety.</p>
+
+    <form id="quizForm" class="card">
+
+        <h3>Question 1</h3>
+        <p>What is phishing?</p>
+
+        <label><input type="radio" name="q1" value="a">
+            A type of computer hardware
+        </label><br>
+
+        <label><input type="radio" name="q1" value="b">
+            A fraudulent attempt to steal sensitive information
+        </label><br>
+
+        <label><input type="radio" name="q1" value="c">
+            A method of improving internet speed
+        </label>
+
+        <hr style="margin: 20px 0;">
+
+        <h3>Question 2</h3>
+        <p>What should you do with a suspicious email link?</p>
+
+        <label><input type="radio" name="q2" value="a">
+            Click it immediately
+        </label><br>
+
+        <label><input type="radio" name="q2" value="b">
+            Share it with everyone
+        </label><br>
+
+        <label><input type="radio" name="q2" value="c">
+            Avoid clicking and verify the sender
+        </label>
+
+        <hr style="margin: 20px 0;">
+
+        <h3>Question 3</h3>
+        <p>Which information should never be shared through an unverified email link?</p>
+
+        <label><input type="radio" name="q3" value="a">
+            Passwords and OTPs
+        </label><br>
+
+        <label><input type="radio" name="q3" value="b">
+            Public weather information
+        </label><br>
+
+        <label><input type="radio" name="q3" value="c">
+            General news headlines
+        </label>
+
+        <hr style="margin: 20px 0;">
+
+        <h3>Question 4</h3>
+        <p>Does HTTPS guarantee that a website is legitimate?</p>
+
+        <label><input type="radio" name="q4" value="a">
+            Yes, always
+        </label><br>
+
+        <label><input type="radio" name="q4" value="b">
+            No, phishing websites can also use HTTPS
+        </label>
+
+        <hr style="margin: 20px 0;">
+
+        <h3>Question 5</h3>
+        <p>What is a common warning sign of phishing?</p>
+
+        <label><input type="radio" name="q5" value="a">
+            Urgent requests for sensitive information
+        </label><br>
+
+        <label><input type="radio" name="q5" value="b">
+            A normal newsletter
+        </label><br>
+
+        <label><input type="radio" name="q5" value="c">
+            A familiar contact's verified message
+        </label>
+
+        <br><br>
+
+        <button type="submit" class="primary-btn">
+            Submit Quiz
+        </button>
+
+        <h3 id="result" style="margin-top: 20px;"></h3>
+
+    </form>
+</section>
+
+<footer>
+    PhishGuard | Student Cybersecurity Project
+</footer>
+
+<script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const answers = {
+            q1: "b",
+            q2: "c",
+            q3: "a",
+            q4: "b",
+            q5: "a"
+        };
+
+        let score = 0;
+
+        for (let question in answers) {
+            const selected = document.querySelector(
+                'input[name="' + question + '"]:checked'
+            );
+
+            if (selected && selected.value === answers[question]) {
+                score++;
+            }
+        }
+
+        document.getElementById("result").innerText =
+            "Your Score: " + score + " / 5";
+    });
+</script>
+
+</body>
+</html>

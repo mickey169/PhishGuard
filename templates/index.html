@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | Cybersecurity Project</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">PhishGuard</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Stay Safe from Phishing Attacks</h1>
+
+        <p>
+            PhishGuard is a student cybersecurity project
+            that helps identify suspicious emails and URLs
+            while promoting online safety awareness.
+        </p>
+
+        <a href="#dashboard" class="primary-btn">
+            Explore Dashboard
+        </a>
+    </section>
+
+    <section class="stats-container">
+    <div class="stat-card">
+        <h3>Total Scans</h3>
+        <p>{{ stats.total_scans }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Email Scans</h3>
+        <p>{{ stats.email_scans }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>URL Scans</h3>
+        <p>{{ stats.url_scans }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>High Risk Results</h3>
+        <p>{{ stats.high_risk_scans }}</p>
+    </div>
+</section>
+
+    <section class="dashboard" id="dashboard">
+
+        <h2>Project Dashboard</h2>
+
+        <div class="cards">
+
+            
+           <div class="card">
+                <h3>Email Detector</h3>
+                <p>Analyze email content for suspicious signs.</p>
+                <a href="/email-detector" class="primary-btn">
+        Open Detector
+                 </a>
+            </div>
+
+
+            
+<div class="card">
+    <h3>URL Scanner</h3>
+    <p>Check URLs for common phishing indicators.</p>
+    <a href="/url-scanner" class="primary-btn">
+        Open Scanner
+    </a>
+</div>
+
+
+            
+<div class="card">
+    <h3>Phishing Simulation</h3>
+    <p>Practice identifying suspicious fictional emails.</p>
+    <a href="/simulation" class="primary-btn">
+        Start Simulation
+    </a>
+</div>
+            
+<div class="card">
+    <h3>Awareness Quiz</h3>
+    <p>Test your knowledge of cybersecurity threats.</p>
+    <a href="/quiz" class="primary-btn">
+        Take Quiz
+    </a>
+</div>
+
+
+<div class="card">
+    <h3>Scan History</h3>
+    <p>View previously analyzed emails and URLs.</p>
+    <a href="/history" class="primary-btn">
+        View History
+    </a>
+</div>
+
+        </div>
+
+    </section>
+
+    <section class="dashboard" id="about">
+        <h2>About PhishGuard</h2>
+        <p>
+            This project demonstrates basic phishing detection,
+            cybersecurity awareness, and safe educational simulations.
+        </p>
+    </section>
+
+    <footer>
+        PhishGuard | Student Cybersecurity Project
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
